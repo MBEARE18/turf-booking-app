@@ -5,8 +5,7 @@ services:
     runtime: node
     buildCommand: npm install
     startCommand: npm start
-    env: node
-    region: ohio # You can change this to your preferred region
+    region: ohio
     plan: free
     rootDir: backend
     envVars:
@@ -15,26 +14,25 @@ services:
       - key: PORT
         value: 5000
       - key: MONGO_URI
-        sync: false # Set this in Render dashboard
+        sync: false
       - key: JWT_SECRET
-        sync: false # Set this in Render dashboard
+        sync: false
       - key: RAZORPAY_KEY_ID
-        sync: false # Set this in Render dashboard
+        sync: false
       - key: RAZORPAY_KEY_SECRET
-        sync: false # Set this in Render dashboard
+        sync: false
       - key: GOOGLE_SCRIPT_URL
-        sync: false # Set this in Render dashboard
+        sync: false
 
   # Frontend Static Site
   - type: static
     name: turf-booking-frontend
-    runtime: static
     buildCommand: npm install && npm run build
     staticPublishPath: dist
     rootDir: frontend
     envVars:
       - key: VITE_API_URL
-        value: https://turf-booking-backend.onrender.com/api # Replace with your actual backend URL after deployment
+        value: https://turf-booking-backend.onrender.com/api
     routes:
       - type: rewrite
         source: /*
